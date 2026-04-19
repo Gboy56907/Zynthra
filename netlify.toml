@@ -7,14 +7,9 @@
   to = "/index.html"
   status = 200
 
-[[redirects]]
-  from = "/.netlify/functions/*"
-  status = 200
-
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
+[[headers]]
+  for = "/*"
+  value = "Cache-Control: no-cache, no-store, must-revalidate"
 
 [metadata]
-  id = "nexacore-intelligence-hub"
   title = "Zynthra - AI Platform"
