@@ -7,6 +7,14 @@
   to = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/.netlify/functions/*"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [metadata]
   id = "nexacore-intelligence-hub"
   title = "Zynthra - AI Platform"
