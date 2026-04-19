@@ -10,6 +10,7 @@ import { PageLoader } from "@/components/site/PageLoader";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { ChatWidget } from "@/components/site/ChatWidget";
+import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 
 function NotFoundComponent() {
   return (
@@ -60,7 +61,7 @@ export const Route = createRootRoute({
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <head><HeadContent /></head>
+      <head><HeadContent /><SchemaMarkup /></head>
       <body>
         {children}
         <Scripts />

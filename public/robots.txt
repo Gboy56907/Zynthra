@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zynthra.com/sitemap.xml
+
+# Disallow admin paths
+Disallow: /admin
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /dashboard/

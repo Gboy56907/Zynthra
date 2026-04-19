@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, Bot, CheckCircle2 } from "lucide-react";
 import { SectionTitle, Reveal } from "./Reveal";
 import { NxButton } from "./NxButton";
+import { HolographicCard } from "./HolographicCard";
+import { ScrollReveal } from "./ScrollAnimation";
 
 const SCRIPT = [
   "Hi Zynthra, our customer support team is overwhelmed.",
@@ -57,45 +59,42 @@ export function AiShowcase() {
           subtitle="From input to outcome in milliseconds."
         />
 
-        <Reveal delay={0.1}>
+        <ScrollReveal delay={0.1}>
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="glass-strong rounded-2xl p-5 font-mono text-sm border border-white/10 min-h-[340px]">
+            <HolographicCard className="p-5 font-mono text-sm min-h-[340px]" tilt={false}>
               <div className="flex items-center gap-1.5 mb-4 pb-3 border-b border-white/10">
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
                 <span className="h-2.5 w-2.5 rounded-full bg-cyan/70" />
                 <span className="ml-3 text-xs text-muted-foreground">terminal · user query</span>
               </div>
-              <pre className="whitespace-pre-wrap leading-relaxed text-foreground/90">
+              <div className="whitespace-pre-wrap leading-relaxed text-foreground/90 overflow-hidden">
                 <span className="text-cyan">$ </span>{typed}
                 <span className="inline-block w-2 h-4 -mb-0.5 bg-cyan animate-blink" />
-              </pre>
-            </div>
+              </div>
+            </HolographicCard>
 
-            <div className="glass-strong rounded-2xl p-5 border border-white/10 min-h-[340px]">
+            <HolographicCard className="p-5 min-h-[340px]" tilt={false}>
               <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
                 <Sparkles className="h-4 w-4 text-cyan" />
                 <span className="text-xs text-muted-foreground">Zynthra orchestrator</span>
               </div>
               <ul className="space-y-3">
                 {STEPS.map((s, i) => (
-                  <motion.li
+                  <li
                     key={`${tick}-${i}`}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={i < stepIdx ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3 }}
                     className="flex items-start gap-3 text-sm"
                   >
                     <span className={`mt-0.5 h-5 w-5 rounded grid place-items-center ${i < stepIdx ? "bg-cyan/20 text-cyan" : "bg-white/5 text-muted-foreground"}`}>
                       {i < stepIdx - 1 ? <CheckCircle2 className="h-3.5 w-3.5" /> : <Bot className="h-3 w-3" />}
                     </span>
                     <span className={i < stepIdx ? "text-foreground" : "text-muted-foreground"}>{s}</span>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </div>
+            </HolographicCard>
           </div>
-        </Reveal>
+        </ScrollReveal>
 
         <Reveal delay={0.2}>
           <div className="mt-10 flex justify-center">

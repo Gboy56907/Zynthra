@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -41,6 +42,11 @@ import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -188,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/chatbot': typeof AdminChatbotRoute
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/chatbot': typeof AdminChatbotRoute
@@ -247,6 +255,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/chatbot': typeof AdminChatbotRoute
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/products'
     | '/resources'
+    | '/sitemap.xml'
     | '/solutions'
     | '/admin/analytics'
     | '/admin/chatbot'
@@ -307,6 +317,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/products'
     | '/resources'
+    | '/sitemap.xml'
     | '/solutions'
     | '/admin/analytics'
     | '/admin/chatbot'
@@ -337,6 +348,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/products'
     | '/resources'
+    | '/sitemap.xml'
     | '/solutions'
     | '/admin/analytics'
     | '/admin/chatbot'
@@ -368,6 +380,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   ProductsRoute: typeof ProductsRoute
   ResourcesRoute: typeof ResourcesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRoute
 }
 
@@ -378,6 +391,13 @@ declare module '@tanstack/react-router' {
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -637,6 +657,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   ProductsRoute: ProductsRoute,
   ResourcesRoute: ResourcesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRoute,
 }
 export const routeTree = rootRouteImport
