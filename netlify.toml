@@ -7,9 +7,5 @@
   to = "/index.html"
   status = 200
 
-[[headers]]
-  for = "/*"
-  value = "Cache-Control: no-cache, no-store, must-revalidate"
-
 [metadata]
   title = "Zynthra - AI Platform"
